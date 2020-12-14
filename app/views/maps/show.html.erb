@@ -1,0 +1,47 @@
+<h1>showファイル</h1>
+<div><%= @map.name%></div>
+<%= image_tag "island_#{@map.id}.png", class: "island_image"%>
+<style>
+.island_image {
+  height: 500px;
+  width: 500px;
+}
+</style>
+
+  <div class="container">
+      <%= form_with(model: [@map, @post], local: true) do |form| %>
+        <%= form.text_area :context, placeholder: "投稿する", rows: "5" %>
+        <%= form.collection_select(:evaluation_id, Evaluation.all, :id, :name, {}, {class: "evaluation-select"})%>
+        <%= form.submit "SEND" %>
+      <% end %>
+  </div>
+
+    <div class="comments">
+    <h4>＜投稿一覧＞</h4>
+      <% if @posts %>
+        <% @posts.each do |post| %>
+          <p>
+            <%= post.context %>
+            <%= post.evaluation.name%>
+          </p>
+        <% end %>
+      <% end %>
+  </div>
+
+  <div class="container">
+      <%= form_with(model: [@map, @comment], local: true) do |form| %>
+        <%= form.text_area :context, placeholder: "投稿する", rows: "5" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+  </div>
+
+    <div class="comments">
+    <h4>＜コメント欄＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <%= comment.context %>
+          </p>
+        <% end %>
+      <% end %>
+  </div>
