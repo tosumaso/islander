@@ -10,6 +10,17 @@ consumer.subscriptions.create("CommentChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
+    const html = 
+    `<div class="comment">
+      <div>${data.user}</div>
+      <div>${data.time}</div>
+      <div>${data.text.content}</div>
+    </div>`;
+    const comments = document.getElementById('comments_list');
+    const newComment = document.getElementById('comment_content');
+    comments.insertAdjacentHTML('beforeend', html);
+    newComment.value='';
+    const form = document.getElementById('comment_submit');
+    form.removeAttribute("disabled");
   }
 });
