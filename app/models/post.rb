@@ -4,6 +4,6 @@ class Post < ApplicationRecord
   belongs_to :evaluation
   belongs_to :user
 
-  validates :context, presence: true
+  validates :content, presence: true
   validates :evaluation_id, numericality: {other_than: 1}
 end
