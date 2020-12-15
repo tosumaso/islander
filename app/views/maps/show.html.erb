@@ -9,8 +9,8 @@
 </style>
 
   <div class="container">
-      <%= form_with(model: [@map, @post], local: true) do |form| %>
-        <%= form.text_area :context, placeholder: "投稿する", rows: "5" %>
+      <%= form_with(model: [@map, @post],url: map_posts_path(@map), method: :post, local: true) do |form| %>
+        <%= form.text_area :content, placeholder: "投稿する", rows: "5" %>
         <%= form.collection_select(:evaluation_id, Evaluation.all, :id, :name, {}, {class: "evaluation-select"})%>
         <%= form.submit "SEND" %>
       <% end %>
@@ -21,7 +21,9 @@
       <% if @posts %>
         <% @posts.each do |post| %>
           <p>
-            <%= post.context %>
+            <%= post.user.name%>
+            <%= post.created_at%>
+            <%= post.content %>
             <%= post.evaluation.name%>
           </p>
         <% end %>
@@ -29,8 +31,8 @@
   </div>
 
   <div class="container">
-      <%= form_with(model: [@map, @comment], local: true) do |form| %>
-        <%= form.text_area :context, placeholder: "投稿する", rows: "5" %>
+      <%= form_with(model: [@map, @comment], url: map_comments_path(@map), method: :post, local: true) do |form| %>
+        <%= form.text_area :content, placeholder: "投稿する", rows: "5" %>
         <%= form.submit "SEND" %>
       <% end %>
   </div>
@@ -40,7 +42,9 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
-            <%= comment.context %>
+            <%= comment.user.name%>
+            <%= comment.created_at%>
+            <%= comment.content %>
           </p>
         <% end %>
       <% end %>

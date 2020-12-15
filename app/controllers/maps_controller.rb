@@ -8,9 +8,9 @@ end
 def show
   @map = Map.find(params[:id])
   @post = Post.new
-  @posts = @map.posts
+  @posts = @map.posts.includes(:user)
   @comment = Comment.new
-  @comments = @map.comments
+  @comments = @map.comments.includes(:user)
 end
 
 end
