@@ -33,19 +33,21 @@
   <div class="container">
       <%= form_with(model: [@map, @comment], url: map_comments_path(@map), method: :post, local: true) do |form| %>
         <%= form.text_area :content, placeholder: "投稿する", rows: "5" %>
-        <%= form.submit "SEND" %>
+        <%= form.submit "SEND", id: "comment_submit" %>
       <% end %>
   </div>
 
     <div class="comments">
     <h4>＜コメント欄＞</h4>
+    <div class="comments_list" id="comments_list">
       <% if @comments %>
         <% @comments.each do |comment| %>
-          <p>
-            <%= comment.user.name%>
-            <%= comment.created_at%>
-            <%= comment.content %>
-          </p>
+          <div class="comment">
+            <div><%= comment.user.name%></div>
+            <div><%= l comment.created_at%></div>
+            <div><%= comment.content %></div>
+          </div>
         <% end %>
       <% end %>
+    </div>
   </div>

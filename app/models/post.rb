@@ -5,5 +5,5 @@ class Post < ApplicationRecord
   belongs_to :user
 
   validates :content, presence: true
-  validates :evaluation_id, numericality: {other_than: 1}
+  validates :evaluation_id, presence: true, numericality: {other_than: 1}
 end

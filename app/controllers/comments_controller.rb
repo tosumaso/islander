@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
     map_find
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to "/maps/#{@comment.map_id}"
+      ja_time = l @comment.created_at
+      ActionCable.server.broadcast 'comment_channel', text: @comment, user: @comment.user.name, time: ja_time 
     else
       @post = Post.new
       @comment = Comment.new
