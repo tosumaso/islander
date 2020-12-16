@@ -1,17 +1,13 @@
 <h1>showファイル</h1>
 <div><%= @map.name%></div>
 <%= image_tag "island_#{@map.id}.png", class: "island_image"%>
-<style>
-.island_image {
-  height: 500px;
-  width: 500px;
-}
-</style>
 
   <div class="container">
       <%= form_with(model: [@map, @post],url: map_posts_path(@map), method: :post, local: true) do |form| %>
         <%= form.text_area :content, placeholder: "投稿する", rows: "5" %>
         <%= form.collection_select(:evaluation_id, Evaluation.all, :id, :name, {}, {class: "evaluation-select"})%>
+        <%= form.file_field :images, name: 'post[images][]', id: 'post_image' %>
+        <div id="image-list"></div>
         <%= form.submit "SEND" %>
       <% end %>
   </div>
@@ -22,9 +18,14 @@
         <% @posts.each do |post| %>
           <p>
             <%= post.user.name%>
-            <%= post.created_at%>
+            <%= l post.created_at%>
             <%= post.content %>
             <%= post.evaluation.name%>
+            <div class="messages">
+              <% post.images.each do |image| %>
+              <%= image_tag image, class:'images' %>
+              <% end %>
+            </div>
           </p>
         <% end %>
       <% end %>
