@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   def create
     @map = Map.find(params[:map_id]) 
-    post = Post.new(post_params)
-    if post.save
-      redirect_to "/maps/#{post.map.id}"
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to "/maps/#{@post.map.id}"
     else
-      @post = Post.new
+    
       @comment = Comment.new
       @posts = @map.posts.includes(:user)
       @comments = @map.comments.includes(:user)
