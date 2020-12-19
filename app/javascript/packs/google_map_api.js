@@ -1,18 +1,5 @@
-    <div class="access_btn">
-      <ul class= "user_info">
-        <% if user_signed_in? %>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user_logout"%></li>
-        <% else %>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "user_registration"%></li>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "user_signin"%></li>
-        <% end %>
-      </ul>
-    </div>
 
-<div id='map'></div>
-
-<script>
-  const locations = [
+const locations = [
   { name: "テスト島1", lat: 35.6585805, lng: 139.7454329, id:1 },
   { name: "テスト島2", lat: 34.9875441, lng: 135.7592164, id:2 }
 ]
@@ -41,6 +28,3 @@ function initMap(){
     });
   });
 }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP_API'] %>&callback=initMap" async defer></script>
