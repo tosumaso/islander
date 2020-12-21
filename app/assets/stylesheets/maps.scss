@@ -1,10 +1,37 @@
 //トップページ
 
+.home_direction {
+  margin: 3% 0px 2%;
+  width: 100%;
+  overflow:hidden;
+}
+
+.where_you_go {
+  font-size: 30px;
+  text-align: center;
+  animation: flowing 10s linear infinite;
+  transform: translateX(100%);
+}
+
+@keyframes flowing {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 #map {
   height: 400px;
+  width: 70vw;
+  margin: 10vh auto;
+  border: 1px solid #C0C0C0;
 }
 
 // maps/show
+
+.island_name {
+  margin: 10px auto;
+  text-align: center;
+}
 
 .island_image {
   height: 500px;
