@@ -1,0 +1,14 @@
+<header>
+  <%= image_tag "home_logo.png"%>
+  <nav>
+    <ul class= "user_info">
+    <% if user_signed_in? %>
+      <li class="user_logout"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete%></li>
+      <li class="user-name"><%= current_user.name %></li>
+    <% else %>
+      <li class="user_registration"><%= link_to '新規登録', new_user_registration_path %></li>
+      <li class="user_signin"><%= link_to 'ログイン', new_user_session_path%></li>
+    <% end %>
+    </ul>
+  </nav>
+</header>

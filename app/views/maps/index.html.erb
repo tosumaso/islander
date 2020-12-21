@@ -1,15 +1,13 @@
-    <div class="access_btn">
-      <ul class= "user_info">
-        <% if user_signed_in? %>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "user_logout"%></li>
-        <% else %>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "user_registration"%></li>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "user_signin"%></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="wrapper_home">
+  <%= render "shared/header"%>
 
-<div id='map'></div>
+  <div class="home_direction">
+    <p class="where_you_go">Where are you going?</p>
+  </div>
+
+  <div id='map'></div>
+  <%= render "shared/footer"%>
+</div>
 
 <script>
   const locations = [

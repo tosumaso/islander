@@ -1,5 +1,7 @@
-<h1>showファイル</h1>
-<div><%= @map.name%></div>
+<div class="wrapper_home">
+<%= render "shared/header"%>
+
+<h1 class="island_name"><%= @map.name%></h1>
 <%= image_tag "island_#{@map.id}.png", class: "island_image"%>
 
 <button id="openModal">投稿</button>
@@ -72,6 +74,8 @@
       <% end %>
     </div>
   </div>
+  <%= render "shared/footer"%>
+</div>
 
 <script>
   (function () {
