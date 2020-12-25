@@ -6,6 +6,20 @@
   background: linear-gradient(135deg, #66FF66	, #14EFFF);
 }
 
+.submit {
+  border-radius: 10px;
+  margin: 0px auto 20px;
+  padding: 5px 15px;
+  border: 2px solid #000000;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.submit:hover {
+  color: #ffffff;
+  background: #000000;
+}
+
 /* header */
 
 header {

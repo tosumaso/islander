@@ -2,7 +2,7 @@
   <%= render "shared/header"%>
 
   <div class="home_direction">
-    <p class="where_you_go">Where are you going?</p>
+    <p class="where_you_go">Choose where you go!</p>
   </div>
 
   <div id='map'></div>
@@ -11,15 +11,24 @@
 
 <script>
   const locations = [
-  { name: "テスト島1", lat: 35.6585805, lng: 139.7454329, id:1 },
-  { name: "テスト島2", lat: 34.9875441, lng: 135.7592164, id:2 }
+  { name: "大島", lat: 34.767177, lng: 139.382119, id:1 },
+  { name: "利島", lat: 34.523533, lng: 139.277686, id:2 },
+  { name: "新島", lat: 34.374711, lng: 139.266616, id:3 },
+  { name: "式根島", lat: 34.326008, lng: 139.211624, id:4 },
+  { name: "神津島", lat: 34.213843, lng: 139.147222, id:5 },
+  { name: "三宅島", lat: 34.077966, lng: 139.520158, id:6 },
+  { name: "御蔵島", lat: 33.874858, lng: 139.602752, id:7 },
+  { name: "八丈島", lat: 33.100545, lng: 139.803815, id:8 },
+  { name: "青ヶ島", lat: 32.458276, lng: 139.764696, id:9 },
+  { name: "父島", lat: 27.070697, lng: 142.211012, id:10 },
+  { name: "母島", lat: 26.651886, lng: 142.158004, id:11}
 ]
 let map;
 
 function initMap(){
   map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 33.514425, lng: 139.311842},
-  zoom: 7
+  zoom: 5
   });
 
   let currentWindow;

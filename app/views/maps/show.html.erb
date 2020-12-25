@@ -2,9 +2,13 @@
 <%= render "shared/header"%>
 
 <h1 class="island_name"><%= @map.name%></h1>
-<%= image_tag "island_#{@map.id}.png", class: "island_image"%>
+<div class="island_image_content">
+  <%= image_tag "island_#{@map.id}.png", class: "island_image"%>
+</div>
 
-<button id="openModal">投稿</button>
+<div class="open_modal">
+  <button id="openModal" class="submit">投稿</button>
+</div>
 
  <%= render partial: 'shared/error_messages', locals: {model: @post}%>
 
@@ -26,7 +30,6 @@
         <div id="image-list"></div>
         <%= form.submit "SEND", class: "submit" %>
       <% end %>
-
     </div>
     <div id="closeModal" class="closeModal">
       ×
@@ -35,44 +38,56 @@
 </section>
 
   <div class="posts">
-    <h4>＜投稿一覧＞</h4>
+    <h2 class="post_list">＜みんなの旅行記＞</h4>
+    <%= paginate @posts %>
+      <% if @posts.blank?%>
+        <p class="post_blank_message">行ったことある人は旅行記を投稿しよう!</p>
+      <% end %>
       <% if @posts %>
         <% @posts.each do |post| %>
           <div class="post_content">
-            <p><%= post.user.name%></p>
-            <p><%= l post.created_at%></p>
-            <p><%= safe_join(post.content.split("\n"), tag(:br)) %></p>
-            <p><%= post.evaluation.name%></p>
-            <div class="post_images">
-              <% post.images.each do |image| %>
-              <%= image_tag image, class:'images' %>
-              <% end %>
+            <div class="upper_post">
+              <div class="upper_post_left">
+                <div class="user_name"><%= post.user.name%></div>
+                <div class="post_created"><%= l post.created_at%></div>
+              </div>
+              <div class="upper_post_right">
+                <div class="evaluation">島の評価: <%= post.evaluation.name%></div>
+              </div>
             </div>
+              <div class="lower">
+                <div class="main_content"><%= safe_join(post.content.split("\n"), tag(:br)) %></div>
+              </div>        
+              <div class="post_images">
+              <% post.images.each do |image| %>
+                <%= image_tag image, class:'images' %>
+              <% end %>
+              </div> 
           </div>
         <% end %>
       <% end %>
   </div>
-
-  <div class="container">
-      <%= form_with(model: [@map, @comment], url: map_comments_path(@map), method: :post, local: true) do |form| %>
-        <%= form.text_area :content, placeholder: "投稿する", rows: "5" %>
-        <%= form.submit "SEND", id: "comment_submit" %>
-      <% end %>
-  </div>
-
+  <h4 class="comment_list">＜コメント欄＞</h4>
     <div class="comments">
-    <h4>＜コメント欄＞</h4>
     <div class="comments_list" id="comments_list">
       <% if @comments %>
         <% @comments.each do |comment| %>
           <div class="comment">
-            <div><%= comment.user.name%></div>
-            <div><%= l comment.created_at%></div>
-            <div><%= comment.content %></div>
+            <div class="comment_top">
+              <div class="comment_user"><%= comment.user.name%></div>
+              <div class="comment_time"><%= l comment.created_at%></div>
+            </div>
+            <div class="comment_main"><%= comment.content %></div>
           </div>
         <% end %>
       <% end %>
     </div>
+  </div>
+    <div class="container">
+      <%= form_with(model: [@map, @comment], url: map_comments_path(@map), class: "comment_form", method: :post, local: true) do |form| %>
+        <%= form.text_area :content, placeholder: "コメントを投稿する(40文字以内)", class: "comment_box", rows: "5" %>
+        <%= form.submit "投稿", id: "comment_submit", class: "submit" %>
+      <% end %>
   </div>
   <%= render "shared/footer"%>
 </div>
