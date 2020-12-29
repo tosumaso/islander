@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     else
       @post = Post.new
       @comment = Comment.new
-      @posts = @map.posts.includes(:user)
+      @posts = @map.posts.includes(:user).page(params[:page]).per(10)
       @comments = @map.comments.includes(:user)
       render template: "maps/show" 
     end

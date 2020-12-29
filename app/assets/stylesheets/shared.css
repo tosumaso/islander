@@ -31,6 +31,11 @@ header {
   align-items: center;
 }
 
+.header_sub {
+  padding: 10px;
+  font-size: 20px;
+}
+
 nav {
   margin: 0 0 0 auto;
 }
@@ -70,6 +75,9 @@ footer {
 
 li {
   list-style: none;
+}
+
+#header_li {
   margin: 0 0 0 15px;
 }
 
