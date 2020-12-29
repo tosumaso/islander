@@ -1,0 +1,30 @@
+.registration-main {
+  text-align: center;
+}
+
+.devise_wrapper {
+  height: calc(100vh - 112px);
+  text-align: center;
+}
+
+.devise_title {
+  margin: 20px;
+}
+
+.form_group {
+  padding: 10px;
+}
+
+.devise_form {
+  padding-bottom: 10px;
+}
+
+.form_text {
+  font-size: 20px;
+}
+
+.input_box {
+  border-radius: 10px;
+  border: 2px solid gray;
+  width: 20vw;
+}
