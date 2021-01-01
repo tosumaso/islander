@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+
 * {
   box-sizing: border-box;
+  font-family: 'Sawarabi Mincho', sans-serif;
 }
 
 .wrapper_home {
@@ -18,6 +21,10 @@
 .submit:hover {
   color: #ffffff;
   background: #000000;
+}
+
+.alert-warning {
+  text-align: center;
 }
 
 /* header */
