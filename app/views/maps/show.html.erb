@@ -28,7 +28,7 @@
           <%= form.file_field :images, name: 'post[images][]', id: 'post_image', class: 'post_image' %>
         </div>
         <div id="image-list"></div>
-        <%= form.submit "SEND", class: "submit" %>
+        <%= form.submit "SEND", class: "submit", name: "commit1" %>
       <% end %>
     </div>
     <div id="closeModal" class="closeModal">
