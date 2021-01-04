@@ -39,7 +39,7 @@ https://gyazo.com/8cd21eb43e511cda204fa500cdf22c8b
 
 https://gyazo.com/0cba43b52e7b9efbfd2bcd4488ddf1c1
 
-トップページです。このgooglemapでピン留めされている島をクリックし、その島の詳細ページへ遷移できます。
+トップページです。このGoogleマップでピン留めされている島をクリックし、その島の詳細ページへ遷移できます。
 
 ### 詳細ページ、旅行記投稿
 
