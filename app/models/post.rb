@@ -11,4 +11,5 @@ class Post < ApplicationRecord
   def image_attached?
     self.images.attached?
   end
+
 end

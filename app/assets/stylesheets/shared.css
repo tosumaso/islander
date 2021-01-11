@@ -80,6 +80,22 @@ footer {
   margin: 0px auto;
 }
 
+.footer_content {
+  text-align: center;
+}
+
+.link_to_rails:hover, .link_to_top:hover {
+  color: #ffffff;
+}
+
+.first_footer {
+  padding: 10px;
+}
+
+.first_footer, .second_footer {
+  font-size: 20px;
+}
+
 li {
   list-style: none;
 }
